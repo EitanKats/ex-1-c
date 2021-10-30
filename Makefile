@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -c -Werror
+CFLAGS = -Wall -Werror
 
 
 all: loops recursives recursived loopd mains maindloop maindrec
@@ -12,7 +12,7 @@ maindloop:
 mains:
 
 loopd: NumClass.h advancedClassificationLoop.c
-	${CC} ${CFLAGS} advancedClassificationLoop.c -o libclassloops.so
+	${CC} ${CFLAGS} -shared advancedClassificationLoop.c -o libclassloops.so
 
 recursived:
 
@@ -21,4 +21,4 @@ recursives:
 loops:
 
 clean:
-	rm -f *.a *.o
+	rm -f *.a *.o *.so
