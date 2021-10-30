@@ -6,6 +6,8 @@
 
 int main() {
     printf("Hello, World!\n");
+    int num = 3;
+    printf("this is our function %d",isArmstrong(num));
     return 0;
 
 }
