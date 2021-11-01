@@ -7,7 +7,8 @@
 int main() {
     printf("Hello, World!\n");
     int num = 3;
-    printf("this is our function %d",isArmstrong(num));
+    printf("%d",num);
+    printf("%d", isPalindrome(1441));
     return 0;
 
 }
