@@ -5,15 +5,14 @@ AR = ar
 all: loops recursives recursived loopd mains maindloop maindrec
 
 maindrec: main.c recursived
-	${CC} ${CFLAGS} main.c -L . -lclassrec -lm -o maindrec
+	${CC} ${CFLAGS} main.c -L ./ -lclassrec -lm -o maindrec
 
 maindloop: main.c loopd
-	${CC} ${CFLAGS} main.c -L . -lclassloops -lm -o maindloop
+	${CC} ${CFLAGS} main.c -L ./ -lclassloops -lm -o maindloop
 
 mains:
 
-loopd: NumClass.h basicClassification.o advancedClassificationLoop.o
-	${CC} ${CFLAGS} -shared advancedClassificationLoop.o basicClassification.o -o libclassloops.so
+loopd: libclassloops.so
 
 recursived: NumClass.h basicClassification.o advancedClassificationRecursion.o
 	${CC} ${CFLAGS} -shared basicClassification.o advancedClassificationRecursion.o -o libclassrec.so
@@ -39,5 +38,8 @@ advancedClassificationLoop.o: advancedClassificationLoop.c
 advancedClassificationRecursion.o: advancedClassificationRecursion.c
 	${CC} ${CFLAGS} -c advancedClassificationRecursion.c
 
+libclassloops.so: NumClass.h basicClassification.o advancedClassificationLoop.o
+	${CC} ${CFLAGS} -shared advancedClassificationLoop.o basicClassification.o
+
 clean:
-	rm -f *.a *.o *.so
+	rm -f *.a *.o *.so  maindrec maindloop
