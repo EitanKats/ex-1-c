@@ -1,6 +1,5 @@
 #include "NumClass.h"
 #include <math.h>
-#include "stdio.h"
 
 int getNumberLength(int num) {
     if (num == 0) {
