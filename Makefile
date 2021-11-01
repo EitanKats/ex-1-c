@@ -1,29 +1,38 @@
 CC = gcc
 CFLAGS = -Wall -Werror
 AR = ar
+MATH = -lm
+OBJECTS_BASIC = basicClassification.o
+OBJECTS_LOOPS = advancedClassificationLoop.o
+OBJECTS_RECURSION = advancedClassificationRecursion.o
 
 all: loops recursives recursived loopd mains maindloop maindrec
 
-maindrec: main.c recursived
+loopd: libclassloops.so
+loops: libclassloops.a
+recursived: libclassrec.so
+recursives: libclassrec.a
+
+mains: main.o recursives
 	${CC} ${CFLAGS} main.c -L ./ -lclassrec -lm -o maindrec
 
-maindloop: main.c loopd
+maindrec: main.o recursived
+	${CC} ${CFLAGS} main.c -L ./ -lclassrec -lm -o maindrec
+
+maindloop: main.o loopd
 	${CC} ${CFLAGS} main.c -L ./ -lclassloops -lm -o maindloop
 
-mains:
+libclassloops.so: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
+	${CC} ${CFLAGS} -shared ${OBJECTS_LOOPS} ${OBJECTS_BASIC}
 
-loopd: libclassloops.so
+libclassloops.a: NumClass.h  ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
+	${AR} -rcs libclassloops.a  ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
 
-recursived: NumClass.h basicClassification.o advancedClassificationRecursion.o
-	${CC} ${CFLAGS} -shared basicClassification.o advancedClassificationRecursion.o -o libclassrec.so
+libclassrec.so: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
+	${CC} ${CFLAGS} -shared ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
 
-
-recursives: NumClass.h basicClassification.o advancedClassificationRecursion.o
-	${AR} -rcs libclassrec.a basicClassification.o advancedClassificationRecursion.o
-
-
-loops: NumClass.h  basicClassification.o advancedClassificationLoop.o
-	${AR} -rcs libclassloops.a  advancedClassificationLoop.o basicClassification.o
+libclassrec.a: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
+	${AR} -rcs libclassrec.a ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
 
 
 main.o: main.c
@@ -38,8 +47,6 @@ advancedClassificationLoop.o: advancedClassificationLoop.c
 advancedClassificationRecursion.o: advancedClassificationRecursion.c
 	${CC} ${CFLAGS} -c advancedClassificationRecursion.c
 
-libclassloops.so: NumClass.h basicClassification.o advancedClassificationLoop.o
-	${CC} ${CFLAGS} -shared advancedClassificationLoop.o basicClassification.o
 
 clean:
-	rm -f *.a *.o *.so  maindrec maindloop
+	rm -f *.a *.o *.so  maindrec maindloop mains
