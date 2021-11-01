@@ -1,5 +1,12 @@
 #include "NumClass.h"
 
+
+
+int isArmstrong(int num) {
+    return 0;
+
+}
+
 int isPalindrome(int num) {
     int originalNum = num;
     int reversedNum = 0;

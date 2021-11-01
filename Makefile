@@ -12,29 +12,30 @@ maindloop: main.c loopd
 
 mains:
 
-loopd: basicClassification.o advancedClassificationLoop.o
+loopd: NumClass.h basicClassification.o advancedClassificationLoop.o
 	${CC} ${CFLAGS} -shared advancedClassificationLoop.o basicClassification.o -o libclassloops.so
 
-recursived: NumClass.h basicClassification.c advancedClassificationRecursion.c
+recursived: NumClass.h basicClassification.o advancedClassificationRecursion.o
 	${CC} ${CFLAGS} -shared basicClassification.o advancedClassificationRecursion.o -o libclassrec.so
 
-recursives: NumClass.h basicClassification.c advancedClassificationRecursion.c
-	${AR} -rcs libclassrec.a basicClassification.o advancedClassificationRecursion.o
+recursives: NumClass.h basicClassification.o advancedClassificationRecursion.o
+	${AR} -rcs libclassrec.a basicClassification.o advancedClassificationRecursion.o -o libclassrec.a
 
 
 loops: NumClass.h  basicClassification.o advancedClassificationLoop.o
-	${AR} -rcs libclassloops.a  advancedClassificationLoop.o basicClassification.o
+	${AR} -rcs libclassloops.a  advancedClassificationLoop.o basicClassification.o -o libclassloops.a
+
 
 main.o: main.c
 	${CC} ${CFLAGS} -c main.c
 
-basicClassification.o: basicClassification.c NumClass.h
+basicClassification.o: basicClassification.c
 	${CC} ${CFLAGS} -c basicClassification.c
 
-advancedClassificationLoop.o: advancedClassificationLoop.c NumClass.h
+advancedClassificationLoop.o: advancedClassificationLoop.c
 	${CC} ${CFLAGS} -c advancedClassificationLoop.c
 
-advancedClassificationRecursion.o: advancedClassificationRecursion.c NumClass.h
+advancedClassificationRecursion.o: advancedClassificationRecursion.c
 	${CC} ${CFLAGS} -c advancedClassificationRecursion.c
 
 clean:
