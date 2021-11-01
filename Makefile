@@ -7,7 +7,7 @@ all: loops recursives recursived loopd mains maindloop maindrec
 maindrec:
 
 maindloop: main.c loopd
-	${CC} ${CFLAGS} libclassloops.so main.c -o maindloop
+	${CC} ${CFLAGS} main.c -L . -lclassloops -o maindloop
 
 mains:
 
