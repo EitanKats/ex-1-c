@@ -12,6 +12,8 @@ int isStrong(int);
 
 int factorial(int);
 
+int numOfDigits (int num);
+
 #endif
 
 
