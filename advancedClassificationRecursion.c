@@ -1,6 +1,6 @@
 #include "NumClass.h"
 #include <math.h>
-
+#include "stdio.h"
 
 int getNumberLength(int num) {
     if (num == 0) {
@@ -20,7 +20,21 @@ int isArmstrong(int num) {
     if (getArmstrongSum(getNumberLength(num), num) == num) {
         return 1;
     }
-    return getArmstrongSum(getNumberLength(num), num);
+    return 0;
 }
 
-int isPalindrome(int num) { return 0; }
+int getReversed(int num, int reversed) {
+    if (num == 0) {
+        return reversed;
+    }
+    return (getReversed(num / 10, (reversed * 10) + (num % 10)));
+}
+
+int isPalindrome(int num) {
+
+    if (getReversed(num, 0) == num) {
+        return 1;
+    }
+
+    return 0;
+}
