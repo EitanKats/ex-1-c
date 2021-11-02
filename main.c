@@ -3,30 +3,34 @@
 #include "NumClass.h"
 
 
-
 int main() {
-    int num1,num2;
+    int num1, num2;
     printf("enter 2 positive numbers: \n");
-    scanf("%d %d",&num1,&num2);
-    for (int i = num1 + 1 ; i <num2 ; ++i) {
+    scanf("%d %d", &num1, &num2);
+    for (int i = num1; i < num2 - 1; ++i) {
         if (isPalindrome(i) == 1) {
-            printf("%d\n",i);
-            continue;
-        }
-        if (isPrime(i) == 1) {
-            printf("%d\n",i);
-            continue;
-        }
-        if (isStrong(i) == 1) {
-            printf("%d\n",i);
-            continue;
-        }
-        if (isArmstrong(i) == 1) {
-            printf("%d\n",i);
-            continue;
+            printf("%d , ", i);
         }
     }
+    printf("\n");
+    for (int i = num1; i < num2 - 1; ++i) {
+        if (isPrime(i) == 1) {
+            printf("%d , ", i);
+        }
+    }
+    printf("\n");
+
+    for (int i = num1; i < num2 - 1; ++i) {
+        if (isStrong(i) == 1) {
+            printf("%d , ", i);
+        }
+    }
+    printf("\n");
+    for (int i = num1; i < num2 - 1; ++i) {
+        if (isArmstrong(i) == 1) {
+            printf("%d , ", i);
+        }
+    }
+    printf("\n");
     return 0;
-
-
 }
