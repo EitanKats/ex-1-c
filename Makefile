@@ -16,7 +16,7 @@ recursives: libclassrec.a
 mains: main.o recursives
 	${CC} ${CFLAGS} main.c -L ./ -lclassrec -lm -o maindrec
 
-maindrec: main.o recursived
+maindrec: main.o libclassrec.a
 	${CC} ${CFLAGS} main.c -L ./ -lclassrec -lm -o maindrec
 
 maindloop: main.o loopd
