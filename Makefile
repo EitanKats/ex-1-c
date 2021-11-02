@@ -14,13 +14,13 @@ recursived: libclassrec.so
 recursives: libclassrec.a
 
 mains: main.o recursives
-	${CC} ${CFLAGS} main.o -L ./ -lclassrec -lm -o mains
+	${CC} ${CFLAGS} main.o -L . -lclassrec -lm -o mains
 
 maindrec: main.o recursived
 	${CC} ${CFLAGS} main.o -L . -lclassrec -lm -o maindrec
 
 maindloop: main.o loopd
-	${CC} ${CFLAGS} main.o -L ./ -lclassloops -lm -o maindloop
+	${CC} ${CFLAGS} main.o -L . -lclassloops -lm -o maindloop
 
 libclassloops.so: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
 	${CC} ${CFLAGS} -shared ${OBJECTS_LOOPS} ${OBJECTS_BASIC} -o ./libclassloops.so
