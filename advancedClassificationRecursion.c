@@ -16,6 +16,10 @@ int getArmstrongSum(int numLength, int num) {
 }
 
 int isArmstrong(int num) {
+    if(num == 0 || num == 1) {
+        return 1;
+    }
+
     if (getArmstrongSum(getNumberLength(num), num) == num) {
         return 1;
     }
