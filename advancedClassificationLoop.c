@@ -15,7 +15,7 @@ int isArmstrong(int num) {
         sum += power;
         number = number / 10;
     }
-    if (sum == number) {
+    if (sum == num) {
         return 1;
     }
     return 0;
