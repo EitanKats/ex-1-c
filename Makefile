@@ -14,7 +14,7 @@ recursived: libclassrec.so
 recursives: libclassrec.a
 
 mains: main.o recursives
-	${CC} ${CFLAGS} main.o -L ./ -lclassrec -lm -o maindrec
+	${CC} ${CFLAGS} main.o -L ./ -lclassrec -lm -o mains
 
 maindrec: main.o recursived
 	${CC} ${CFLAGS} main.o -L . -lclassrec -lm -o maindrec
