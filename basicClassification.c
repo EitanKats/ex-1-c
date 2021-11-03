@@ -1,5 +1,8 @@
 
 int isPrime(int num) {
+    if(num == 1) {
+        return 1;
+    }
     int i;
     for (i = 2; i <= num / 2; i++) {
         if (num % i != 0) {
