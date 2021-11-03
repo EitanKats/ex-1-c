@@ -12,13 +12,13 @@ loops: libclassloops.a
 recursived: libclassrec.so
 recursives: libclassrec.a
 
-mains: main.o recursives
+mains: main.o libclassrec.a
 	${CC} ${CFLAGS} main.o -L . -lclassrec -lm -o mains
 
-maindrec: main.o recursived
+maindrec: main.o libclassrec.so
 	${CC} ${CFLAGS} main.o -L . -lclassrec -lm -o maindrec
 
-maindloop: main.o loopd
+maindloop: main.o libclassloops.so
 	${CC} ${CFLAGS} main.o -L . -lclassloops -lm -o maindloop
 
 libclassloops.so: ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
