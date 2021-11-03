@@ -15,6 +15,9 @@ int isPrime(int num) {
 }
 
 int factorial(int num) {
+    if(num == 0) {
+        return 1;
+    }
     int i;
     for (i = num - 1; i > 0; i--) {
         num *= i;
