@@ -1,6 +1,14 @@
 #include "NumClass.h"
 #include <math.h>
 
+int numOfDigits(int num) {
+    int counter = 0;
+    while (num > 0) {
+        num = num / 10;
+        counter++;
+    }
+    return counter;
+}
 
 int isArmstrong(int num) {
     int length = numOfDigits(num);
@@ -21,15 +29,6 @@ int isArmstrong(int num) {
     return 0;
 }
 
-
-int numOfDigits(int num) {
-    int counter = 0;
-    while (num > 0) {
-        num = num / 10;
-        counter++;
-    }
-    return counter;
-}
 
 int isPalindrome(int num) {
     int originalNum = num;

@@ -12,6 +12,14 @@ int isPrime(int num) {
     return 1;
 }
 
+int factorial(int num) {
+    int i;
+    for (i = num - 1; i > 0; i--) {
+        num *= i;
+    }
+    return num;
+}
+
 int isStrong(int num) {
     int sum = 0;
     int newNum = num;
@@ -22,13 +30,7 @@ int isStrong(int num) {
     return sum == num;
 }
 
-int factorial(int num) {
-    int i;
-    for (i = num - 1; i > 0; i--) {
-        num *= i;
-    }
-    return num;
-}
+
 
 
 
