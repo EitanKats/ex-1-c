@@ -15,9 +15,6 @@ int isPrime(int num) {
 }
 
 int factorial(int num) {
-    if(num == 0) {
-        return 1;
-    }
     int i;
     for (i = num - 1; i > 0; i--) {
         num *= i;
@@ -26,6 +23,9 @@ int factorial(int num) {
 }
 
 int isStrong(int num) {
+    if(num == 0) {
+        return 0;
+    }
     int sum = 0;
     int newNum = num;
     while (newNum > 0) {
