@@ -1,7 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Werror
 AR = ar
-MATH = -lm
 OBJECTS_BASIC = basicClassification.o
 OBJECTS_LOOPS = advancedClassificationLoop.o
 OBJECTS_RECURSION = advancedClassificationRecursion.o
@@ -22,19 +21,19 @@ maindrec: main.o recursived
 maindloop: main.o loopd
 	${CC} ${CFLAGS} main.o -L . -lclassloops -lm -o maindloop
 
-libclassloops.so: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
+libclassloops.so: ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
 	${CC} ${CFLAGS} -shared ${OBJECTS_LOOPS} ${OBJECTS_BASIC} -o libclassloops.so
 
-libclassloops.a: NumClass.h  ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
+libclassloops.a: ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
 	${AR} -rcs libclassloops.a  ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
 
-libclassrec.so: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
+libclassrec.so: ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
 	${CC} ${CFLAGS} -shared ${OBJECTS_BASIC} ${OBJECTS_RECURSION} -o libclassrec.so
 
-libclassrec.a: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
+libclassrec.a: ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
 	${AR} -rcs libclassrec.a ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
 
-main.o: main.c
+main.o: main.c NumClass.h
 	${CC} ${CFLAGS} -c main.c
 
 basicClassification.o: basicClassification.c

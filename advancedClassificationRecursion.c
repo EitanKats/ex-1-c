@@ -1,4 +1,3 @@
-#include "NumClass.h"
 #include <math.h>
 
 int getNumberLength(int num) {

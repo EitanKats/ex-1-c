@@ -1,4 +1,3 @@
-#include "NumClass.h"
 
 int isPrime(int num) {
     int i;
