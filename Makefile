@@ -23,13 +23,13 @@ maindloop: main.o loopd
 	${CC} ${CFLAGS} main.o -L . -lclassloops -lm -o maindloop
 
 libclassloops.so: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
-	${CC} ${CFLAGS} -shared ${OBJECTS_LOOPS} ${OBJECTS_BASIC} -o ./libclassloops.so
+	${CC} ${CFLAGS} -shared ${OBJECTS_LOOPS} ${OBJECTS_BASIC} -o libclassloops.so
 
 libclassloops.a: NumClass.h  ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
 	${AR} -rcs libclassloops.a  ${OBJECTS_BASIC} ${OBJECTS_LOOPS}
 
 libclassrec.so: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
-	${CC} ${CFLAGS} -shared ${OBJECTS_BASIC} ${OBJECTS_RECURSION} -o ./libclassrec.so
+	${CC} ${CFLAGS} -shared ${OBJECTS_BASIC} ${OBJECTS_RECURSION} -o libclassrec.so
 
 libclassrec.a: NumClass.h ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
 	${AR} -rcs libclassrec.a ${OBJECTS_BASIC} ${OBJECTS_RECURSION}
@@ -38,13 +38,13 @@ main.o: main.c
 	${CC} ${CFLAGS} -c main.c
 
 basicClassification.o: basicClassification.c
-	${CC} ${CFLAGS} -c basicClassification.c
+	${CC} ${CFLAGS} -fPIC -c basicClassification.c
 
 advancedClassificationLoop.o: advancedClassificationLoop.c
-	${CC} ${CFLAGS} -c advancedClassificationLoop.c
+	${CC} ${CFLAGS} -fPIC -c advancedClassificationLoop.c
 
 advancedClassificationRecursion.o: advancedClassificationRecursion.c
-	${CC} ${CFLAGS} -c advancedClassificationRecursion.c
+	${CC} ${CFLAGS} -fPIC -c advancedClassificationRecursion.c
 
 clean:
 	rm -f *.a *.o *.so  maindrec maindloop mains
